@@ -11,11 +11,23 @@
 
 ## 函数
 
-> 所谓编程，就是将一组需求分解成一组函数与数据结构的技能 —— 《JavaScript: The Good Parts》
+> 所谓编程，就是将一组需求分解成一组函数与数据结构的技能 —— 《JavaScript 语言精粹》
 
 ## XMLHttpRequest
+  ```javascript
+  function reqListener () {
+    console.log(this.responseText);
+  }
+  var oReq = new XMLHttpRequest();
+  oReq.addEventListener("load", reqListener);
+  oReq.open("POST", "https://api.github.com/_private/browser/stats");
+  oReq.send(JSON.stringify({}));
+  ```
 
 ### 附录
-- [javascript高阶函数介绍](https://www.imys.net/20160530/javascript-advanced-functions.html)
-- [ECMAScript5.1-ch](http://yanhaijing.com/es5/#about)
-- [ECMAScript6](http://www.ecma-international.org/ecma-262/6.0/)
+1. 图书推荐
+    - JavaScript 高级程序设计
+    - JavaScript 语言精粹
+1. [javascript高阶函数介绍](https://www.imys.net/20160530/javascript-advanced-functions.html)
+1. [ECMAScript5.1-ch](http://yanhaijing.com/es5/#about)
+1. [ECMAScript6](http://www.ecma-international.org/ecma-262/6.0/)

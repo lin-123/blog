@@ -6,19 +6,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <style>
+    .wrap{
+      border: 2px solid yellow;
+      width: 100px;
+      overflow: hidden;
+      height: 100px;
+      text-align: center;
+    }
+    .center{
+      display: inline-block;
+      vertical-align: middle;
+    }
+  </style>
 </head>
 
 <body>
+  <div class="wrap">
+    <div class="center">1111122</div>
+    <div class="">===</div>
+  </div>
 
-  <script>
-    function reqListener () {
-      console.log(this.responseText);
-    }
-    var oReq = new XMLHttpRequest();
-    oReq.addEventListener("load", reqListener);
-    oReq.open("POST", "https://api.github.com/_private/browser/stats");
-    oReq.send(JSON.stringify({}));
-  </script>
 </body>
-
 </html>
