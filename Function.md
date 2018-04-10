@@ -30,6 +30,7 @@
       hi()
       ```
     - *注：* this指向全局。据`Javascript语言精粹`说，是一个语言上的错误。倘若语言设计正确，那么当内部函数被调用的时候this应该指向外部函数的this，而非全局。
+    - <strong>But</strong> 为什么设计者让他一定指向全局呢 ？不知大家怎么看这个问题
       ```javascript
       const obj = {
         name: 'kaka',
