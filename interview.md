@@ -146,3 +146,27 @@
 
 
 - [BFC与IFC概念理解+布局规则+形成方法+用处](https://segmentfault.com/a/119000000954574)
+
+### css的盒子模型、 box-sizing、 消除IE浏览器下的怪异模式
+
+> 这个刚开始没注意。看了概念之后才发现，原来这些是自己平时写css的时候就会注意的事项。只是没有查相关的理论依据。 现在整理一下。
+
+> 当任意一个块级元素的宽度或高度被显式指定，它应当只确定这个可见元素自身的宽度或高度，而padding, border和margin随后被应用。
+  <br/> Internet Explorer在“怪异模式”（怪异模式）则把内容，内边距（padding）和边框（border）全部包括在一个指定的宽度或高度之内；这导致它呈现出一个比遵从标准行为的结果更窄或者更短的盒子。
+
+
+1. 所谓css盒子模型，就是每一个dom元素都可以看成是一个盒子。 这个盒子包括四个部分： 外边距[margin]， 边框[border]， 内边距[padding]， 内容[content]。
+1. box-sizing呢，就是定义这个元素的宽度应该怎么计算。
+    - 默认情况下 `box-sizing: content-box;` ，以内容的宽高为元素的宽高。 *ps: 因为是默认的，所以没有太在意，就以为浏览器就是这样设置的*
+    - box-sizing 还有其他的几个属性：
+      ```css
+      box-sizing: content-box; /* width = content */
+      box-sizing: border-box;  /* width = content + padding + border */
+      /* 全局 值 */
+      box-sizing: inherit;
+      box-sizing: initial;
+      box-sizing: unset;
+      ```
+    - IE的怪异模式： width = content + padding + border。IE默认情况下是使用的`border-box`这个属性。 
+        * 如何消除：就是显示的将设置的值，box-sizing: border-box or content-box。
+        * 一些“专家”认为就统一用 border-box 就好啦。 主观上也认为 border-box 比较合适。
