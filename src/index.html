@@ -6,9 +6,57 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+
 </head>
 
 <body>
+  <style>
+    .box{
+      overflow: hidden;
+      border: 1px solid black;
+      height: 60px;
+      margin-top: 10px;
+    }
+    .one-line{
+      text-align-last: justify;
+    }
+    .two-line{
+      text-align: justify;
+    }
+
+    .circle{
+      width: 60px;
+      height: 60px;
+      background: black;
+      display: inline-block;
+      border-radius: 50%;
+    }
+    .blank{
+      display: inline-block;
+    }
+    .last-line{
+      width: 100%;
+    }
+    </style>
+    <!-- two line  -->
+    <div class="box two-line">
+      <span class="blank"></span>
+      <i class="circle"></i>
+      <i class="circle"></i>
+      <i class="circle"></i>
+      <span class="blank"></span>
+      <div class="blank last-line"></div>
+    </div>
+
+    <!-- one line -->
+    <div class="box one-line">
+      <span class="blank"></span>
+      <i class="circle"></i>
+      <i class="circle"></i>
+      <i class="circle"></i>
+      <span class="blank"></span>
+    </div>
+
 <script>
 function sort(arr, left, right) {
   left = left || 0

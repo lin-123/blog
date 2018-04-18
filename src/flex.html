@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>flex</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="./css/pc.init.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <style type="text/css">
+    .container{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+    .row{
+      margin: 0 10px;
+    }
+    .box{
+      display: flex;
+      background: #ddd;
+      width: 250px;
+      flex-wrap: wrap;
+      justify-content: center;
+      height: 250px;
+    }
+    .unit{
+      background: #aaa;
+      width: 80px;
+      height: 80px;
+      margin: 10px;
+    }
+  </style>
+
+</head>
+
+<body>
+<h1>flex</h1>
+<div class="container">
+  <div class="row">
+    <h3>flex row</h3>
+    <div class="box" style="flex-direction: row">
+      <div class="unit">横向排列</div>
+      <div class="unit">2</div>
+      <div class="unit">当第三个单元在一行放不下的时候就会换行</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <h3>flex col</h3>
+    <div class="box" style="flex-direction: column;">
+      <div class="unit">纵排列</div>
+      <div class="unit">2</div>
+      <div class="unit">当第三个单元在一行放不下的时候就会换行</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <h3>嵌套</h3>
+    <p>flex项目不能嵌套</p>
+    <div class="box row">
+      <div class="unit" style="height: 200px;">=height: 200px;=</div>
+      <div class="unit">=unit 2=</div>
+      <div style="padding: 5px; background: #03f707;">
+        面前嵌套的 flex:auto元素， 这个时候里面的元素会受到外部元素的空间约束
+        <div class="unit full">={
+            flex: auto;
+            height: 100%;
+            width: 100%;
+          }=
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <h3>超出滚动</h3>
+    <div class="box" style="flex-direction: column; flex-wrap: nowrap;">
+      <div class="unit"></div>
+      <div class="scroll-wrap" style="flex: 1; overflow-y: scroll; background: white; width: 100%; flex-grow: all;">
+        <div class="unit" style="width: 100%;">flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。</div>
+        <div class="unit" style="width: 100%;">该属性有两个快捷值：auto (1 1 auto) 和 none (0 0 auto)。</div>
+        <div class="unit" style="width: 100%;">建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。</div>
+        <div class="unit">1</div>
+        <div class="unit">2</div>
+        <div class="unit">3</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <h3>align-self: stretch;</h3>
+    <p>子项目自动充满剩余空间</p>
+    <div class="box">
+      <div class="unit">正常项目</div>
+      <div class="unit" style="flex: 1; align-self: stretch;">拉伸项目</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

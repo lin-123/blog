@@ -170,3 +170,79 @@
     - IE的怪异模式： width = content + padding + border。IE默认情况下是使用的`border-box`这个属性。 
         * 如何消除：就是显示的将设置的值，box-sizing: border-box or content-box。
         * 一些“专家”认为就统一用 border-box 就好啦。 主观上也认为 border-box 比较合适。
+
+### flex布局
+> flex： 伸缩。所以 flex 布局即伸缩布局、弹性布局
+
+1. 定义：
+    - The flex CSS property specifies how a flex item will grow or shrink so as to fit the space available in its flex container.
+    - flex 属性定义了一个 flex 项目，它可以通过延展、收缩来适应他的 flex 容器的可用区域
+
+1. 基本概念
+    - 任何一个元素都可以用 flex 布局
+    - 采用 flex 布局的元素成为 flex 容器。 他的所有子元素都是容器成员， 成为 flex 项目(flex-item)
+    - flex 容器有两个轴线。 x轴、y轴。 所有的子元素都是基于这两个轴线来布局。 可以居始( xx-start )、居末( xx-end )、居中( xx-center )、平均( xx-justify )。
+
+1. 附录
+    - [阮老师--语法篇](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)
+    - [阮老师--实例篇](http://www.ruanyifeng.com/blog/2015/07/flex-examples.html)
+    - [联系](./src/flex.html)
+
+### 有三个长宽都是60px的圆圈使他们均匀的排列的一行
+
+- `text-align-last: justify` 让最后一行两端对齐
+- `text-align: justify` 让文本的正文(第一行——倒数第二行)两端对齐， 对于最后一行失效。 内部元素必须是`inline`或`inline-block`属性
+
+    ```html
+    <style>
+    .box{
+      overflow: hidden;
+      border: 1px solid black;
+      height: 60px;
+      margin-top: 10px
+    }
+    .one-line{
+      text-align-last: justify;
+    }
+    .two-line{
+      text-align: justify;
+    }
+
+    .circle{
+      width: 60px;
+      height: 60px;
+      background: black;
+      display: inline-block;
+      border-radius: 50%;
+    }
+    .blank{
+      display: inline-block;
+    }
+    .last-line{
+      width: 100%;
+    }
+    </style>
+    <!-- one line -->
+    <div class="box one-line">
+      <span class="blank"></span>
+      <i class="circle"></i>
+      <i class="circle"></i>
+      <i class="circle"></i>
+      <span class="blank"></span>
+    </div>
+    <!-- two line  -->
+    <div class="box two-line">
+      <span class="blank"></span>
+      <i class="circle"></i>
+      <i class="circle"></i>
+      <i class="circle"></i>
+      <span class="blank"></span>
+      <div class="blank last-line"></div>
+    </div>
+    ```
+
+## HTTP
+
+### 浏览器同源的历史
+
+### http头信息， 缓存头信息： etag, cache-controle, last-modified, expired
