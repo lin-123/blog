@@ -19,6 +19,11 @@
   // 方法三
   123123123.toLocaleString() // 123,123,123
   ```
+- 用最简单的方式实现：从 'a65sd12ase12r1' 到 '1212156'
+
+    ```javascript
+    const result = 'a65sd12ase12r1'.match(/d/g).reverse().join('')
+    ```
 
 ## DOM
 
@@ -190,8 +195,8 @@
 
 ### 有三个长宽都是60px的圆圈使他们均匀的排列的一行
 
-- `text-align-last: justify` 让最后一行两端对齐
-- `text-align: justify` 让文本的正文(第一行——倒数第二行)两端对齐， 对于最后一行失效。 内部元素必须是`inline`或`inline-block`属性
+1. `text-align-last: justify` 让最后一行两端对齐
+1. `text-align: justify` 让文本的正文(第一行——倒数第二行)两端对齐， 对于最后一行失效。 内部元素必须是`inline`或`inline-block`属性
 
     ```html
     <style>
@@ -238,6 +243,34 @@
       <i class="circle"></i>
       <span class="blank"></span>
       <div class="blank last-line"></div>
+    </div>
+    ```
+
+1. 用flex, `justify-content: space-evenly`
+
+    ```html
+    <style>
+    .box{
+      overflow: hidden;
+      border: 1px solid black;
+      height: 60px;
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    .circle{
+      width: 60px;
+      height: 60px;
+      background: black;
+      display: flex;
+      border-radius: 50%;
+    }
+    </style>
+    <div class="box">
+      <i class="circle"></i>
+      <i class="circle"></i>
+      <i class="circle"></i>
     </div>
     ```
 
