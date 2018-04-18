@@ -191,9 +191,11 @@
 1. 附录
     - [阮老师--语法篇](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)
     - [阮老师--实例篇](http://www.ruanyifeng.com/blog/2015/07/flex-examples.html)
-    - [联系](./src/flex.html)
+    - [练习](./src/flex.html)
 
 ### 有三个长宽都是60px的圆圈使他们均匀的排列的一行
+
+<img src='./img/均匀分布.png'>
 
 1. `text-align-last: justify` 让最后一行两端对齐
 1. `text-align: justify` 让文本的正文(第一行——倒数第二行)两端对齐， 对于最后一行失效。 内部元素必须是`inline`或`inline-block`属性
