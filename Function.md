@@ -72,7 +72,6 @@
       say.apply(obj, [', welcome'])
       ```
 
-
 ### 闭包
 
 > 指的是有权访问另一个函数作用域中的变量的函数。 <br/> 通俗点： 就是A函数内嵌套了一个B函数，并且B函数访问了A函数内的变量。
@@ -84,7 +83,7 @@
 
 > 函数可以作为参数被传递；函数可以作为返回值输出。
 
-#### 柯里化
+#### 柯里化 —— 还没理解这个东西的含义的作用
 
 > 在计算机科学中，柯里化（英语：Currying），又译为卡瑞化或加里化，是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术。 <br/>
 说人话就是： `fn(a,b,c) -> fn(a)(b)(c)`
@@ -103,8 +102,82 @@ const sumCurry = curry(sum)
 console.log(sumCurry(1)(2)(3))
 ```
 
-> 反柯里化 `fn(a,b,c) -> fn(a)(b)(c)`
+> 反柯里化 `fn(a)(b)(c) -> fn(a,b,c)`
 
 ```javascript
+function unCurry(fn){}
 
+function sum(a,b) {
+  return a + b
+}
+
+const sumUnCurry = unCurry(sum)
+sumUncurry(1,2,3,4,5)
+
+```
+
+#### 函数节流
+
+> 就是避免在上一个函数条用还没结束的时候又重新调用一遍。微信的扫码登录就用了这个功能。
+
+```javascript
+var getData = (function () {
+  var lock = false
+  return function(cb) {
+    if(lock) return;
+    lock = true
+    $.get('https://xxx', function(err, data) {
+      lock = false
+      cb(err, data)
+    })
+  }
+})()
+getData()
+```
+
+#### 分时函数
+
+> 就是在固定的时间间隔内只允许调用一次函数。
+
+> 如当页面滚动结束时触发 http 请求，页面在滚动期间会频繁触发滚动事件，如果把http请求绑定到页面滚动事件上，这样就会频繁发送http请求。这样就浪费了很多的http请求。
+
+```javascript
+var getData = (function() {
+  var schedule
+  return function() {
+    if(schedule) clearTimeout(schedule);
+    schedule = setTimeout(() => {
+      $.get('xxx', function() {
+        // todo
+      })
+    }, 300);
+  }
+})()
+
+el.addEventListener('scroll', getData)
+```
+
+#### 惰性函数
+
+> 能计算一次的就不要计算两次； 函数是可以重新定义的。
+
+> 浏览器特征检测是前端开发中必不可少的，比如返回顶部，我们需要区分火狐和其他浏览器来决定 scrollTop 应当设置给谁。
+
+```javascript
+// 新手
+var scrollTop = function(){
+  if(/firefox/i.test(navigator.userAgent)) {
+      document.documentElement.scrollTop = 0;
+  } else {
+      document.body.scrollTop = 0;
+  }
+}
+// 老司机
+var scrollTop = (function(){
+  var isFF = /firefox/i.test(navigator.userAgent);
+  var docEl = document[ isFF ? 'documentElement' : 'body' ];
+  return function(){
+      docEl.scrollTop = 0;
+  }
+})();
 ```

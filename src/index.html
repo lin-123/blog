@@ -10,58 +10,9 @@
 </head>
 
 <body>
-  <style>
-    .box{
-      overflow: hidden;
-      border: 1px solid black;
-      height: 60px;
-      margin-top: 10px;
-      display: flex;
-      justify-content: space-evenly;
-    }
-
-    .circle{
-      width: 60px;
-      height: 60px;
-      background: black;
-      display: flex;
-      border-radius: 50%;
-    }
-    </style>
-    <div class="box">
-      <i class="circle"></i>
-      <i class="circle"></i>
-      <i class="circle"></i>
-    </div>
 <script>
-function sort(arr, left, right) {
-  left = left || 0
-  right = right || arr.length - 1
-  if(left < right) {
-    let partitionIndex = partition(arr, left, right)
-    sort(arr, left, partitionIndex - 1)
-    sort(arr, partitionIndex+1, right)
-  }
-}
 
-function partition(arr, left, right) {
-  let provite = arr[left]
-  while(left < right && arr[right] >= provite) right--
-  swap(arr, left, right)
-  while(left < right && arr[left] <= provite) left++
-  swap(arr, left, right)
 
-  if(left == right) return left;
-  return partition(arr, left, right)
-}
-
-function swap(arr, left, right) {
-  let tmp = arr[left]
-  arr[right] = arr[left]
-  arr[left] = tmp
-}
-console.log(partition([2,1,3, 4, 0], 0, 2))
-// console.log(sort([2,1,3]))
 
 </script>
 </body>
