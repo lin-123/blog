@@ -1,15 +1,46 @@
-
+/**
+ * 数独
+ *
+ * 要求:
+ *   1. 给定一个不完整数独
+ *   2. 返回一个填充完整的数独
+ *
+ * 思路：
+ *   1. 递归
+ *   2. 过滤当前空白位置可以填的所有数字nums，如果nums存在，走步骤3； 如果不存在，返回上级递归函数
+ *   3. 向当前位置插入第 index 个数字，递归到步骤2； 如果步骤2返回false， 向当前位置插入第 index+1 个数字
+ *
+ * 优化:
+ *   1. 时间能不能更快点
+ *   2. 3*3的计算可以缓存起来
+ *
+ */
 class SudoKu {
   constructor(arr) {
     this.origin = arr
     this.BAK = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    this.LEN = 9
+    this.LEN = arr.length
 
-    const result = this.run({ x: 0, y: 0})
+    const result = this.run(0, 0)
     if(!result) return console.error('输入数据不合法');
     console.log(arr);
   }
 
+  // 检测一个数独是否合法
+  check() {
+    const memery = []
+    for (var i = this.LEN - 1; i >= 0; i--) {
+      this.origin[i].forEach( j => {
+        if(memery[j]) {
+          throw 'not allowed'
+        }
+        memery[j] = true
+      })
+      // this.
+    }
+  }
+
+  // 完成一个数独
   run(x, y) {
     console.log(x, y)
     const arr = this.origin
