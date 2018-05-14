@@ -13,6 +13,8 @@
 
 > 所谓编程，就是将一组需求分解成一组函数与数据结构的技能 —— 《JavaScript 语言精粹》
 
+## [Event Loop](./EventLoop.md)
+
 ## [leetcode](./leetcode/README.md)
 
 ## XMLHttpRequest
