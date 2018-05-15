@@ -35,26 +35,31 @@
   ```
 
 - 对象的继承
-
+  - 调研面向对象编程中对象的继承到底是什么样子的
+  - es6 里 super 做了什么事情
   ```javascript
   // javascript 继承实际上构造函数的调用和原型链的重新赋值
-  function Man (name) {
+  function SuperType(name) {
     this.name = name
   }
-  Man.prototype.sayName = function() {
-    console.log('my name is:', this.name)
+  SuperType.prototype.sayName = function() {
+    console.log(this.name)
   }
 
-  // 所以， 一个对象去继承另外一个对象的属性和方法
-  function Kaka(name) {
-    Man.apply(this, arguments)
+  function SubType(name, age) {
+    // 这一步将导致 SubType 的实例中 name 属性直接从 SuperType 中赋值过来。
+    SuperType.call(this, name)
+    this.age = age
   }
-  // 需要对prototype和constructor都赋值
-  Kaka.prototype = Man.prototype
-  Kaka.prototype.constructor = Kaka
 
-  const kaka = new Kaka('kaka')
-  kaka.sayName() // kaka
+  SubType.prototype = new SupertType() // SubType.prototyp 指向了 SuperType 的实例
+  // SubType.prototype = SuperType.prototype // 和上一行二者有什么区别
+
+  SubType.prototype.constructor = SubType
+
+  SubType.prototype.sayAge = function() { console.log(this.age) }
+
+  var sub = new SubType('haha', 18)
   ```
 
 - hasOwnProperty， 是检测对象的实例属性中是否存在
@@ -75,6 +80,7 @@
   ```
 
 - 原型链
+    * 对象A，有一个实例a， a有原型对象a.__proto__， a.__proto__ 指向对象B的实例b
     * 就是一个对象A有原型对象B，B也是一个对象，也有自己的原型C，一直向上追溯，直到原型对象为 null。
     * 简言之 A.cProto = A.__proto__.__proto__.cProto
     * JavaScript 中所有的对象都继承自 Object 对象。 Object.prototype.prototype = undefined
