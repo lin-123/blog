@@ -9,9 +9,24 @@ JavaScript是单线程，这个大家都知道。但是为什么是这样呢？�
 
 1. setTimeout setInterval 是一个事件循环
 2. io 操作的callback是一个事件循环
-3. 1的事件在2的事件执行之后
+3. `1`的事件在`2`的事件执行之后
 
 ## 浏览器事件循环
+
+```javascript
+setTimeout(function() {
+  console.log(1)
+})
+
+new Promise((resolve, reject) => {
+  console.log(2)
+  resolve(3)
+}).then(res => {
+  console.log(res)
+})
+
+// 打印结果： 2 3 1
+```
 
 ## nodejs 事件循环
 
