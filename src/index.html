@@ -10,10 +10,53 @@
 </head>
 
 <body>
-<script>
+  <style>
+    .box {
+      overflow: hidden;
+      border: 1px solid black;
+      height: 60px;
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-evenly;
+    }
 
+    .circle {
+      width: 60px;
+      height: 60px;
+      background: black;
+      display: flex;
+      border-radius: 50%;
+    }
+  </style>
+  <div class="box">
+    <i class="circle"></i>
+    <i class="circle"></i>
+    <i class="circle"></i>
+  </div>
+  <script>
+    // javascript 继承实际上构造函数的调用和原型链的重新赋值
+  function SuperType(name) {
+    this.name = name
+  }
+  SuperType.prototype.sayName = function() {
+    console.log(this.name)
+  }
 
+  function SubType(name, age) {
+    // 这一步将导致 SubType 的实例中 name 属性直接从 SuperType 中赋值过来。
+    SuperType.call(this, name)
+    this.age = age
+  }
 
-</script>
+  SubType.prototype = new SuperType() // SubType.prototyp 指向了 SuperType 的实例
+  // SubType.prototype = SuperType.prototype // 和上一行二者有什么区别
+
+  SubType.prototype.constructor = SubType
+
+  SubType.prototype.sayAge = function() { console.log(this.age) }
+
+  var sub = new SubType('haha', 18)
+  </script>
 </body>
+
 </html>
