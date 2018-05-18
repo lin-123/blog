@@ -8,6 +8,14 @@
 </head>
 <body>
 
-<script src="./maxProfit.js"></script>
+  <script src="./firstUniqChar.js"></script>
+  <script>
+  const aop = function(fn, ...args) {
+    let start = Date.now()
+    console.log(fn(...args))
+    console.log('end', Date.now() - start);
+  }
+  aop(firstUniqChar, '"loveleetcode"')
+  </script>
 </body>
 </html>
