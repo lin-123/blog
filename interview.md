@@ -280,4 +280,9 @@
 
 ### 浏览器同源的历史
 
+### 跨域怎么解决
+
 ### http头信息， 缓存头信息： etag, cache-controle, last-modified, expired
+
+### get post 区别
+
