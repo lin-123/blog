@@ -1,7 +1,5 @@
 # Javascript
 
-> 没什么说的，无论你做了多少年前端，还是基础最重要
-
 ## [面试题](./interview.md)
 
 ## [原型对象， 就是prototype对象](./prototype.md)
